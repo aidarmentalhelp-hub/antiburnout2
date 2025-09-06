@@ -3,8 +3,8 @@ import Utils from '../utils.js';
 class QuickHelpPage {
     constructor() {
         this.timers = {};
-        this.colors = ['красный', 'оранжевый', 'желтый', 'зеленый', 'голубой', 'синий', 'фиолетовый', 
-                      'розовый', 'коричневый', 'черный', 'белый', 'серый', 'золотой', 'серебряный', 'бирюзовый'];
+        this.colors = ['красных', 'оранжевых', 'желтых', 'зеленых', 'голубых', 'синих', 'фиолетовых', 
+                      'розовых', 'коричневых', 'черных', 'белых', 'серых'];
         this.objects = ['предметов', 'вещей', 'объектов', 'деталей', 'элементов', 'изделий', 'аксессуаров'];
         this.init();
     }
@@ -131,4 +131,5 @@ document.addEventListener('DOMContentLoaded', function() {
     window.stopTimer = function(type) { window.quickHelpPage.stopTimer(type); };
     window.generateTask = function() { window.quickHelpPage.generateTask(); };
     window.resetHelp = function() { window.quickHelpPage.resetHelp(); };
+
 });
