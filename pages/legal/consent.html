@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Осознанность | Анти-выгорание для врачей</title>
+    <style>
+        @font-face {
+            font-family: 'Airfool';
+            src: url('Airfool.ttf') format('truetype'),
+                 url('Airfool.otf') format('opentype'),
+                 url('Airfool.woff') format('woff'),
+                 url('Airfool.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .airfool-title {
+            font-family: 'Airfool', cursive;
+            font-size: 4.5rem;
+            text-align: center;
+            color: white;
+            margin: 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .main-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .quick-nav-top {
+            margin: 1rem 0 2rem 0;
+        }
+        
+        .nav-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .nav-btn:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .technique {
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s;
+        }
+        
+        .technique:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .technique h3 {
+            color: var(--primary);
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        .technique-content {
+            margin-top: 1rem;
+        }
+        
+        .card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .card.success {
+            border-left-color: var(--success);
+            background: #eafaf1;
+        }
+        
+        .card.warning {
+            border-left-color: var(--warning);
+            background: #fef9e7;
+        }
+        
+        .timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: var(--primary);
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .timer-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .timer-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .timer-btn.stop {
+            background: var(--accent);
+        }
+        
+        .timer-btn.stop:hover {
+            background: #c0392b;
+        }
+        
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 1rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .fire-extinguisher {
+            font-size: 3rem;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));
+        }
+        
+        ol, ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .b-checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .b-checklist li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .b-checklist li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .rules-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .rule-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .rule-text {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="main-title">
+        <span class="fire-extinguisher">🧯</span>
+        <h1 class="airfool-title">Давай потушим!</h1>
+        <span class="fire-extinguisher">🧯</span>
+    </div>
+    <p class="subtitle">Ваш личный пожарный щит от профессионального выгорания</p>
+</header>
+
+<!-- Дублированные кнопки навигации сверху -->
+<div class="quick-nav quick-nav-top">
+    <a href="index.html" class="nav-btn">🏠 Главная</a>
+    <a href="quick-help.html" class="nav-btn">🚀 Первая помощь</a>
+    <a href="daily.html" class="nav-btn">📅 На каждый день</a>
+    <a href="mindfulness.html" class="nav-btn" style="background: var(--secondary); color: white;">🧠 Осознанность</a>
+    <a href="boundaries.html" class="nav-btn">🛡️ Границы</a>
+    <a href="organizational.html" class="nav-btn">🏥 Для организации</a>
+    <a href="emergency.html" class="nav-btn">🆘 Экстренная помощь</a>
+</div>
+
+<div class="section">
+    <h2 style="text-align: center; color: var(--primary);">🧠 Практика осознанности</h2>
+    <p style="text-align: center; font-size: 1.1rem;">Простые техники для присутствия "здесь и сейчас"</p>
+</div>
+
+<!-- Что такое осознанность -->
+<div class="technique">
+    <h3>❓ Что такое осознанность?</h3>
+    <div class="technique-content">
+        <p>Осознанность — это способность полностью присутствовать в текущем моменте, без оценки и осуждения. Это навык, который можно развивать, как мышцу.</p>
+        <div class="card success">
+            <p><strong>Преимущества практики осознанности:</strong></p>
+            <ul>
+                <li>Снижение уровня стресса и тревожности</li>
+                <li>Улучшение концентрации и внимания</li>
+                <li>Развитие эмоциональной устойчивости</li>
+                <li>Улучшение качества принятия решений</li>
+                <li>Повышение удовлетворенности жизнью</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Правила практики осознанности -->
+<div class="technique">
+    <h3>📋 Правила практики осознанности</h3>
+    <div class="technique-content">
+        <div class="rules-container">
+            <div class="rule-item">
+                <div class="rule-icon">🌿</div>
+                <div class="rule-text">
+                    <strong>Безоценочность</strong> — наблюдайте за мыслями и ощущениями без оценки "хорошо" или "плохо"
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-icon">⏳</div>
+                <div class="rule-text">
+                    <strong>Терпение</strong> — не торопите процесс, позвольте всему происходить в своем темпе
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-icon">👶</div>
+                <div class="rule-text">
+                    <strong>Ум новичка</strong> — подходите к каждому моменту как к новому опыту, без предубеждений
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-icon">💝</div>
+                <div class="rule-text">
+                    <strong>Доброта к себе</strong> — относитесь к себе с состраданием, особенно когда ум блуждает
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-icon">🔄</div>
+                <div class="rule-text">
+                    <strong>Регулярность</strong> — лучше 5 минут ежедневно, чем час раз в неделю
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Осознанное дыхание -->
+<div class="technique">
+    <h3>🌬️ Осознанное дыхание</h3>
+    <div class="technique-content">
+        <p>Самая простая и доступная практика, которую можно делать где угодно:</p>
+        
+        <div class="card">
+            <h4>📝 Инструкция:</h4>
+            <ol>
+                <li>Сядьте удобно, спина прямая, но не напряженная</li>
+                <li>Закройте глаза или опустите взгляд</li>
+                <li>Направьте внимание на дыхание</li>
+                <li>Отмечайте ощущения вдоха и выдоха</li>
+                <li>Когда ум отвлекается — мягко верните внимание к дыханию</li>
+                <li>Практикуйте 3-5 минут</li>
+            </ol>
+        </div>
+        
+        <div class="timer-display" id="breath-timer">05:00</div>
+        <div class="timer-controls">
+            <button class="timer-btn" onclick="startTimer('breath', 5)">▶️ 5 минут</button>
+            <button class="timer-btn" onclick="startTimer('breath', 3)">▶️ 3 минуты</button>
+            <button class="timer-btn stop" onclick="stopTimer('breath')">⏹️ Остановить</button>
+        </div>
+        
+        <div class="card success">
+            <h4>💡 Советы для начала:</h4>
+            <ul>
+                <li>Начинайте с 1-2 минут в день</li>
+                <li>Не пытайтесь "остановить мысли" — просто наблюдайте их</li>
+                <li>Используйте дыхание как якорь внимания</li>
+                <li>Практикуйте в одно и то же время для формирования привычки</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Осознанный прием пищи -->
+<div class="technique">
+    <h3>🍎 Осознанный прием пищи</h3>
+    <div class="technique-content">
+        <p>Практика осознанности во время еды помогает улучшить пищеварение и получить больше удовольствия от пищи:</p>
+        
+        <div class="card">
+            <h4>📝 Как практиковать:</h4>
+            <ol>
+                <li>Перед едой сделайте паузу, поблагодарите за пищу</li>
+                <li>Рассмотрите пищу: цвет, форма, текстура</li>
+                <li>Почувствуйте аромат</li>
+                <li>Положите небольшой кусочек в рот</li>
+                <li>Ощутите вкус, текстуру, температуру</li>
+                <li>Жуйте медленно, отмечая изменения вкуса</li>
+                <li>Проглотите и почувствуйте движение пищи</li>
+                <li>Делайте паузы между кусочками</li>
+            </ol>
+        </div>
+        
+        <div class="card success">
+            <h4>🎯 Преимущества:</h4>
+            <ul>
+                <li>Улучшение пищеварения</li>
+                <li>Контроль порций и веса</li>
+                <li>Увеличение удовольствия от еды</li>
+                <li>Снижение импульсивного переедания</li>
+                <li>Развитие благодарности за пищу</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Осознанное движение -->
+<div class="technique">
+    <h3>🚶‍♀️ Осознанное движение</h3>
+    <div class="technique-content">
+        <p>Превратите обычную физическую активность в практику осознанности:</p>
+        
+        <div class="card">
+            <h4>👣 Осознанная ходьба:</h4>
+            <ul>
+                <li>Идите немного медленнее обычного</li>
+                <li>Ощущайте контакт стоп с землей</li>
+                <li>Отмечайте движение мышц ног и бедер</li>
+                <li>Наблюдайте за движением тела в пространстве</li>
+                <li>Обращайте внимание на окружающие звуки и запахи</li>
+                <li>Когда ум отвлекается — мягко верните внимание к ходьбе</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h4>🧘‍♂️ Осознанная растяжка:</h4>
+            <ul>
+                <li>Выполняйте медленные, плавные движения</li>
+                <li>Сосредоточьтесь на ощущениях в мышцах</li>
+                <li>Дышите глубоко и осознанно</li>
+                <li>Не стремитесь к максимальной амплитуде</li>
+                <li>Отмечайте границы комфорта без преодоления</li>
+            </ul>
+        </div>
+        
+        <div class="card success">
+            <h4>🏥 Для работы в больнице:</h4>
+            <ul>
+                <li>Осознанная ходьба по коридорам между пациентами</li>
+                <li>Минута осознанного стояния у окна</li>
+                <li>Осознанное мытье рук между процедурами</li>
+                <li>Глубокое осознанное дыхание перед сложным случаем</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Техника "СТОП" -->
+<div class="technique">
+    <h3>⏹️ Техника "СТОП"</h3>
+    <div class="technique-content">
+        <p>Быстрая практика для моментов стресса или перегруза:</p>
+        
+        <div class="card warning">
+            <h4>С — Остановиться</h4>
+            <p>Прервите автоматические действия, сделайте паузу</p>
+        </div>
+        
+        <div class="card">
+            <h4>Т — Дышать</h4>
+            <p>Сделайте 3 глубоких осознанных вдоха и выдоха</p>
+        </div>
+        
+        <div class="card">
+            <h4>О — Наблюдать</h4>
+            <p>Отметьте что происходит в теле, уме, эмоциях без оценки</p>
+        </div>
+        
+        <div class="card success">
+            <h4>П — Продолжить</h4>
+            <p>Осознанно вернитесь к деятельности, учитывая наблюдения</p>
+        </div>
+        
+        <div class="card">
+            <p><strong>⏱️ Время:</strong> 30-60 секунд<br>
+            <strong>🎯 Когда использовать:</strong> Перед сложным разговором, в момент раздражения, при ощущении перегруза</p>
+        </div>
+    </div>
+</div>
+
+<!-- Сканирование тела -->
+<div class="technique">
+    <h3>🔍 Сканирование тела</h3>
+    <div class="technique-content">
+        <p>Практика для развития телесной осознанности и снятия напряжения:</p>
+        
+        <div class="card">
+            <h4>📝 Инструкция (10-15 минут):</h4>
+            <ol>
+                <li>Лягте или сядьте удобно</li>
+                <li>Закройте глаза, несколько раз глубоко вдохните</li>
+                <li>Направьте внимание на пальцы ног, отметьте ощущения</li>
+                <li>Медленно перемещайте внимание вверх по телу</li>
+                <li>Останавливайтесь на каждой части тела на 20-30 секунд</li>
+                <li>Отмечайте ощущения без оценки и изменения</li>
+                <li>Если встретите напряжение — просто осознайте его</li>
+                <li>Закончите общим осознанием всего тела</li>
+            </ol>
+        </div>
+        
+        <div class="timer-display" id="body-timer">10:00</div>
+        <div class="timer-controls">
+            <button class="timer-btn" onclick="startTimer('body', 10)">▶️ 10 минут</button>
+            <button class="timer-btn" onclick="startTimer('body', 5)">▶️ 5 минут</button>
+            <button class="timer-btn stop" onclick="stopTimer('body')">⏹️ Остановить</button>
+        </div>
+        
+        <div class="card success">
+            <h4>💎 Польза:</h4>
+            <ul>
+                <li>Снятие мышечного напряжения</li>
+                <li>Улучшение связи "ум-тело"</li>
+                <li>Развитие способности замечать ранние признаки стресса</li>
+                <li>Улучшение качества сна (если практиковать вечером)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Основные кнопки навигации -->
+<div class="quick-nav">
+    <a href="index.html" class="nav-btn">🏠 Главная</a>
+    <a href="quick-help.html" class="nav-btn">🚀 Первая помощь</a>
+    <a href="daily.html" class="nav-btn">📅 На каждый день</a>
+    <a href="mindfulness.html" class="nav-btn" style="background: var(--secondary); color: white;">🧠 Осознанность</a>
+    <a href="boundaries.html" class="nav-btn">🛡️ Границы</a>
+    <a href="organizational.html" class="nav-btn">🏥 Для организации</a>
+    <a href="emergency.html" class="nav-btn">🆘 Экстренная помощь</a>
+</div>
+
+<footer>
+    <p>© 2023 Анти-выгорание для врачей. Все права защищены.</p>
+    <div class="footer-links">
+        <a href="index.html">🏠 Главная</a>
+        <a href="quick-help.html">🚀 Первая помощь</a>
+        <a href="daily.html">📅 На каждый день</a>
+        <a href="mindfulness.html">🧠 Осознанность</a>
+        <a href="boundaries.html">🛡️ Границы</a>
+        <a href="organizational.html">🏥 Для организации</a>
+        <a href="emergency.html">🆘 Экстренная помощь</a>
+    </div>
+    <p>Если вам нужна помощь, обратитесь к профессиональному психологу или позвоните на горячую линию: 8-800-2000-122</p>
+</footer>
+
+<script>
+    // Таймеры
+    const timers = {};
+    
+    function startTimer(type, minutes) {
+        if (timers[type]) {
+            clearInterval(timers[type]);
+        }
+        
+        const timerDisplay = document.getElementById(`${type}-timer`);
+        let seconds = minutes * 60;
+        
+        timerDisplay.style.color = '#e74c3c';
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:00`;
+        
+        timers[type] = setInterval(() => {
+            seconds--;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            
+            timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            
+            if (seconds <= 0) {
+                clearInterval(timers[type]);
+                timerDisplay.textContent = "00:00";
+                timerDisplay.style.color = '#2ecc71';
+            }
+        }, 1000);
+    }
+    
+    function stopTimer(type) {
+        if (timers[type]) {
+            clearInterval(timers[type]);
+            timers[type] = null;
+        }
+        
+        const timerDisplay = document.getElementById(`${type}-timer`);
+        
+        if (type === 'breath') {
+            timerDisplay.textContent = "05:00";
+        } else if (type === 'body') {
+            timerDisplay.textContent = "10:00";
+        }
+        
+        timerDisplay.style.color = '#2c3e50';
+    }
+</script>
+
+</body>
+</html>
